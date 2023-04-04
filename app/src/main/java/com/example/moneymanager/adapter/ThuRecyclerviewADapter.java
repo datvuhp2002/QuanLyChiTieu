@@ -1,7 +1,6 @@
 package com.example.moneymanager.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +12,20 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymanager.R;
-import com.example.moneymanager.dao.LoaiThuDao;
-import com.example.moneymanager.entity.LoaiThu;
+import com.example.moneymanager.entity.Thu;
 
 import java.util.List;
 
-public class LoaiThuRecyclerviewADapter extends RecyclerView.Adapter<LoaiThuRecyclerviewADapter.LoaiThuViewHolder>{
+public class ThuRecyclerviewADapter extends RecyclerView.Adapter<ThuRecyclerviewADapter.ThuViewHolder>{
     private LayoutInflater mLayoutInflater;
-    private List<LoaiThu> mList;
+    private List<Thu> mList;
     public static ItemClickListener itemEditClickListener;
     public static ItemClickListener itemViewclickListener;
 
-    public LoaiThuRecyclerviewADapter(Context context){
+    public ThuRecyclerviewADapter(Context context){
         mLayoutInflater = LayoutInflater.from(context);
     }
-    public LoaiThu getItem(int position){
+    public Thu getItem(int position){
         if(mList == null || position >= mList.size()){
             return null;
         }
@@ -35,25 +33,26 @@ public class LoaiThuRecyclerviewADapter extends RecyclerView.Adapter<LoaiThuRecy
     }
 
     public void setOnItemEditClickListener(ItemClickListener itemEditClickListener) {
-        LoaiThuRecyclerviewADapter.itemEditClickListener = itemEditClickListener;
+        ThuRecyclerviewADapter.itemEditClickListener = itemEditClickListener;
     }
 
     public void setOnItemViewclickListener(ItemClickListener itemViewclickListener) {
-        LoaiThuRecyclerviewADapter.itemViewclickListener = itemViewclickListener;
+        ThuRecyclerviewADapter.itemViewclickListener = itemViewclickListener;
     }
 
     @NonNull
     @Override
-    public LoaiThuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(R.layout.recyclerview_loai_thu_item,parent,false);
-        return new LoaiThuViewHolder(view);
+    public ThuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mLayoutInflater.inflate(R.layout.recyclerview_thu_item,parent,false);
+        return new ThuViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull LoaiThuViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ThuViewHolder holder, int position) {
         if(mList != null){
             holder.tvName.setText(mList.get(position).ten);
+            holder.tvAmout.setText(""+mList.get(position).sotien+"Đồng");
             holder.position = position;
         }
     }
@@ -65,19 +64,20 @@ public class LoaiThuRecyclerviewADapter extends RecyclerView.Adapter<LoaiThuRecy
         return mList.size();
     }
 
-    public void setList(List<LoaiThu> mList) {
+    public void setList(List<Thu> mList) {
         this.mList = mList;
         notifyDataSetChanged();
     }
 
-    public static class LoaiThuViewHolder extends RecyclerView.ViewHolder{
-        public TextView tvName;
+    public static class ThuViewHolder extends RecyclerView.ViewHolder{
+        public TextView tvName,tvAmout;
         public ImageView ivEdit, ivView;
         public CardView cv;
         public int position;
-        public LoaiThuViewHolder(@NonNull View itemView) {
+        public ThuViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
+            tvAmout = itemView.findViewById(R.id.tvAmount);
             ivView = itemView.findViewById(R.id.ivView);
             ivEdit = itemView.findViewById(R.id.ivEdit);
             cv = (CardView) itemView;

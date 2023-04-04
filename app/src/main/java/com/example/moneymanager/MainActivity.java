@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.moneymanager.dialog.LoaiThuDialog;
+import com.example.moneymanager.dialog.ThuDialog;
+import com.example.moneymanager.ui.thu.KhoanThuFragment;
+import com.example.moneymanager.ui.thu.KhoanThuViewModel;
 import com.example.moneymanager.ui.thu.LoaiThuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = fragments.get(fragments.size() - 1);
                 if(fragment instanceof LoaiThuFragment){
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext, (LoaiThuFragment) fragment);
+                    dialog.show();
+                } else if (fragment instanceof KhoanThuFragment) {
+                    ThuDialog dialog = new ThuDialog(currentContext,(KhoanThuFragment) fragment);
                     dialog.show();
                 }
             }
