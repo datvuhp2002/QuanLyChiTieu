@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.moneymanager.R;
 import com.example.moneymanager.adapter.ThongKeLoaiChiRecycleViewAdapter;
@@ -77,8 +78,15 @@ public class ThongKeFragment extends Fragment {
         mThongKeViewModel.getTongThu().observe(getActivity(), new Observer<Float>() {
             @Override
             public void onChanged(Float tong) {
-                mEtTongThu.setText(""+ tong);
+                if(tong != null && tong.floatValue() != 0.0f){
+                    mEtTongThu.setText(""+tong);
+
+                }else{
+                    mEtTongThu.setText("0.0");
+                }
+
             }
+
         });
         mThongKeViewModel.getThongKeLoaiThus().observe(getActivity(), new Observer<List<ThongKeLoaiThu>>() {
             @Override
@@ -89,7 +97,12 @@ public class ThongKeFragment extends Fragment {
         mThongKeViewModel.getTongChi().observe(getActivity(), new Observer<Float>() {
             @Override
             public void onChanged(Float tong) {
-                mEtTongChi.setText(""+ tong);
+                if(tong != null && tong.floatValue() != 0.0f){
+                    mEtTongChi.setText(""+ tong);
+
+                }else{
+                    mEtTongChi.setText("0.0");
+                }
             }
         });
         mThongKeViewModel.getThongKeLoaiChis().observe(getActivity(), new Observer<List<ThongKeLoaiChi>>() {
