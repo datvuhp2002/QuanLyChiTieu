@@ -1,7 +1,6 @@
 package com.example.moneymanager.adapter;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +54,8 @@ public class ThongKeLoaiThuRecycleViewAdapter extends RecyclerView.Adapter<Thong
         public EditText etTongLoaiThu;
         public ThongKeLoaiThuViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTenLoaiThu = itemView.findViewById(R.id.tvTenLoaiThu);
-            etTongLoaiThu = itemView.findViewById(R.id.etTongLoaiThu);
+            tvTenLoaiThu = itemView.findViewById(R.id.tvTenLoaiChi);
+            etTongLoaiThu = itemView.findViewById(R.id.etTongLoaiChi);
         }
     }
 }

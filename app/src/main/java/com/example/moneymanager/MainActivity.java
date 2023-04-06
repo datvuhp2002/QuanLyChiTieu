@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.moneymanager.dialog.ChiDialog;
+import com.example.moneymanager.dialog.LoaiChiDialog;
 import com.example.moneymanager.dialog.LoaiThuDialog;
 import com.example.moneymanager.dialog.ThuDialog;
+import com.example.moneymanager.ui.chi.KhoanChiFragment;
+import com.example.moneymanager.ui.chi.LoaiChiFragment;
 import com.example.moneymanager.ui.thu.KhoanThuFragment;
-import com.example.moneymanager.ui.thu.KhoanThuViewModel;
 import com.example.moneymanager.ui.thu.LoaiThuFragment;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +51,19 @@ public class MainActivity extends AppCompatActivity {
                 if(fragment instanceof LoaiThuFragment){
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext, (LoaiThuFragment) fragment);
                     dialog.show();
-                } else if (fragment instanceof KhoanThuFragment) {
-                    ThuDialog dialog = new ThuDialog(currentContext,(KhoanThuFragment) fragment);
+                };
+                if (fragment instanceof KhoanThuFragment) {
+                    ThuDialog dialog = new ThuDialog(currentContext, (KhoanThuFragment) fragment);
                     dialog.show();
-                }
+                };
+                if(fragment instanceof LoaiChiFragment){
+                    LoaiChiDialog dialog = new LoaiChiDialog(currentContext, (LoaiChiFragment) fragment);
+                    dialog.show();
+                };
+                if (fragment instanceof KhoanChiFragment) {
+                    ChiDialog dialog = new ChiDialog(currentContext, (KhoanChiFragment) fragment);
+                    dialog.show();
+                };
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -81,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
