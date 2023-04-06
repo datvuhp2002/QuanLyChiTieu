@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.example.moneymanager.R;
 import com.example.moneymanager.adapter.ChiViewPager2Adapter;
+import com.example.moneymanager.adapter.ChiViewPager2Adapter;
+import com.example.moneymanager.ui.thu.LoaiThuViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -22,14 +24,18 @@ import com.google.android.material.tabs.TabLayoutMediator;
  * create an instance of this fragment.
  */
 public class ChiFragment extends Fragment {
-
     private ViewPager2 mVp;
     private TabLayout mTl;
+    private ChiViewModel mViewModel;
+
     public ChiFragment() {
         // Required empty public constructor
     }
+    public ChiViewModel getViewModel() {
+        return mViewModel;
+    }
 
-    public static ChiFragment newInstance(String param1, String param2) {
+    public static ChiFragment newInstance() {
         ChiFragment fragment = new ChiFragment();
         return fragment;
     }
@@ -37,7 +43,10 @@ public class ChiFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mVp = view.findViewById(R.id.viewPager2);
