@@ -4,16 +4,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moneymanager.adapter.ThongKeLoaiChiRecycleViewAdapter;
+import com.example.moneymanager.adapter.ThongKeLoaiThuRecycleViewAdapter;
 import com.example.moneymanager.databinding.FragmentHomeBinding;
+import com.example.moneymanager.ui.thongke.ThongKeViewModel;
 
 public class HomeFragment extends Fragment {
-
+    private ThongKeViewModel mThongKeViewModel;
+    private EditText mEtTongThu,mEtTongChi;
+    private RecyclerView rvThongKeLoaiThu, rvThongKeLoaiChi;
+    private ThongKeLoaiThuRecycleViewAdapter mThongKeLoaiThuAdapter;
+    private ThongKeLoaiChiRecycleViewAdapter mThongKeLoaiChiAdapter;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
