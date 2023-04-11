@@ -3,6 +3,7 @@ package com.example.moneymanager.dialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Spinner;
@@ -67,19 +68,31 @@ public class ThuDialog {
                 .setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Thu lt = new Thu();
-                        lt.ten = etName.getText().toString();
-                        lt.sotien = Float.parseFloat(etAmout.getText().toString());
-                        lt.ghichu = etNote.getText().toString();
-                        lt.ltid = ((LoaiThu) mAdapter.getItem(spType.getSelectedItemPosition())).lid;
-                        if(mEditMode){
-                            lt.tid = Integer.parseInt(etId.getText().toString());
-                            mViewModel.update(lt);
-                        }else{
-                            mViewModel.insert(lt);
-                            Toast.makeText(context,"Loại thu được lưu",Toast.LENGTH_SHORT).show();
+                        if(TextUtils.isEmpty(etName.getText().toString())  ) {
+                            etName.setError("Không được để trống");
+                            Toast.makeText(context, "Lưu không thành công do thiếu dữ liệu", Toast.LENGTH_SHORT).show();
+                            return;
                         }
+                        if(TextUtils.isEmpty(etAmout.getText().toString())){
+                            etAmout.setError("Không được để trống");
+                            Toast.makeText(context, "Lưu không thành công do thiếu dữ liệu", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if(!TextUtils.isEmpty(etAmout.getText().toString()) && !TextUtils.isEmpty(etName.getText().toString())) {
 
+                            Thu lt = new Thu();
+                            lt.ten = etName.getText().toString();
+                            lt.sotien = Float.parseFloat(etAmout.getText().toString());
+                            lt.ghichu = etNote.getText().toString();
+                            lt.ltid = ((LoaiThu) mAdapter.getItem(spType.getSelectedItemPosition())).lid;
+                            if (mEditMode) {
+                                lt.tid = Integer.parseInt(etId.getText().toString());
+                                mViewModel.update(lt);
+                            } else {
+                                mViewModel.insert(lt);
+                                Toast.makeText(context, "Loại thu được lưu", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 });
         mDialog = builder.create();

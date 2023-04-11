@@ -3,6 +3,7 @@ package com.example.moneymanager.dialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -45,14 +46,19 @@ public class LoaiChiDialog {
                 .setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        LoaiChi lc = new LoaiChi();
-                        lc.ten = etName.getText().toString();
-                        if(mEditMode){
-                            lc.cid = Integer.parseInt(etId.getText().toString());
-                            mViewModel.update(lc);
-                        }else{
-                            mViewModel.insert(lc);
-                            Toast.makeText(context,"Loại chi được lưu",Toast.LENGTH_SHORT).show();
+                        if(TextUtils.isEmpty(etName.getText().toString())){
+                            etName.setError("Không được để trống");
+                            Toast.makeText(context, "Lưu không thành công do thiếu dữ liệu", Toast.LENGTH_SHORT).show();
+                        }else {
+                            LoaiChi lc = new LoaiChi();
+                            lc.ten = etName.getText().toString();
+                            if (mEditMode) {
+                                lc.cid = Integer.parseInt(etId.getText().toString());
+                                mViewModel.update(lc);
+                            } else {
+                                mViewModel.insert(lc);
+                                Toast.makeText(context, "Loại chi được lưu", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                     }
