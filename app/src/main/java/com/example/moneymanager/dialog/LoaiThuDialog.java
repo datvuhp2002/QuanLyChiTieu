@@ -47,16 +47,18 @@ public class LoaiThuDialog {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if(TextUtils.isEmpty(etName.getText().toString())){
+                            etName.setError("Không được để trống");
                             Toast.makeText(context, "Lưu không thành công do thiếu dữ liệu", Toast.LENGTH_SHORT).show();
-                        }
-                        LoaiThu lt = new LoaiThu();
-                        lt.ten = etName.getText().toString();
-                        if(mEditMode){
-                            lt.lid = Integer.parseInt(etId.getText().toString());
-                            mViewModel.update(lt);
-                        }else{
-                            mViewModel.insert(lt);
-                            Toast.makeText(context,"Loại thu được lưu",Toast.LENGTH_SHORT).show();
+                        }else {
+                            LoaiThu lt = new LoaiThu();
+                            lt.ten = etName.getText().toString();
+                            if (mEditMode) {
+                                lt.lid = Integer.parseInt(etId.getText().toString());
+                                mViewModel.update(lt);
+                            } else {
+                                mViewModel.insert(lt);
+                                Toast.makeText(context, "Loại thu được lưu", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
