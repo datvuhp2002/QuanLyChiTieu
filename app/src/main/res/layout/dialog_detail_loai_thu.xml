@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00BCD4"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/textView7"
@@ -17,7 +18,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Thông tin loại thu"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ScrollView
@@ -35,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Mã loại thu"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvId"
