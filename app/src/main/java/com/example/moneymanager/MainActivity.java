@@ -1,6 +1,8 @@
 package com.example.moneymanager;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
@@ -8,15 +10,21 @@ import com.example.moneymanager.dialog.ChiDialog;
 import com.example.moneymanager.dialog.LoaiChiDialog;
 import com.example.moneymanager.dialog.LoaiThuDialog;
 import com.example.moneymanager.dialog.ThuDialog;
+import com.example.moneymanager.entity.Thu;
+import com.example.moneymanager.ui.chi.ChiFragment;
 import com.example.moneymanager.ui.chi.KhoanChiFragment;
 import com.example.moneymanager.ui.chi.LoaiChiFragment;
+import com.example.moneymanager.ui.home.HomeFragment;
 import com.example.moneymanager.ui.thu.KhoanThuFragment;
 import com.example.moneymanager.ui.thu.LoaiThuFragment;
+import com.example.moneymanager.ui.thu.ThuFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -24,6 +32,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.moneymanager.databinding.ActivityMainBinding;
 
@@ -38,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         final MainActivity currentContext = this;
@@ -85,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     @Override
@@ -99,4 +109,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }
