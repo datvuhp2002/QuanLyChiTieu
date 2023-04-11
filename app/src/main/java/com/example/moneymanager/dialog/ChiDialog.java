@@ -3,6 +3,7 @@ package com.example.moneymanager.dialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Spinner;
@@ -67,6 +68,9 @@ public class ChiDialog {
                 .setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(etName.getText().toString()) || TextUtils.isEmpty(etAmout.getText().toString()) ) {
+                            Toast.makeText(context, "Lưu không thành công do thiếu dữ liệu", Toast.LENGTH_SHORT).show();
+                        }
                         Chi lc = new Chi();
                         lc.ten = etName.getText().toString();
                         lc.sotien = Float.parseFloat(etAmout.getText().toString());
