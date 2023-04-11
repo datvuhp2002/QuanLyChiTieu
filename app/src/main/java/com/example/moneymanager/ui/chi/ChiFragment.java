@@ -59,10 +59,10 @@ public class ChiFragment extends Fragment {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 if(position == 0){
-                    tab.setIcon(R.drawable.ic_menu_camera);
+                    tab.setIcon(R.drawable.baseline_money_off_24);
                     tab.setText("Khoản Chi");
                 }else{
-                    tab.setIcon(R.drawable.ic_menu_camera);
+                    tab.setIcon(R.drawable.baseline_money_24);
                     tab.setText("Loại Khoản Chi");
                 }
             }
