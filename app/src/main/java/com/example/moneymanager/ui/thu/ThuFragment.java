@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.moneymanager.R;
 import com.example.moneymanager.adapter.ThuViewPager2Adapter;
+import com.example.moneymanager.databinding.ActivityMainBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -91,4 +92,5 @@ public class ThuFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_thu, container, false);
     }
+
 }

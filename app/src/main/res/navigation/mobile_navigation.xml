@@ -8,23 +8,23 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.moneymanager.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Trang chủ"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_chi"
         android:name="com.example.moneymanager.ui.chi.ChiFragment"
-        android:label="fragment_chi"
+        android:label="Chi tiêu"
         tools:layout="@layout/fragment_chi" />
     <fragment
         android:id="@+id/nav_gioithieu"
         android:name="com.example.moneymanager.ui.gioithieu.GioiThieuFragment"
-        android:label="fragment_gioi_thieu"
+        android:label="Giới thiệu"
         tools:layout="@layout/fragment_gioi_thieu" />
     <fragment
         android:id="@+id/nav_thongke"
         android:name="com.example.moneymanager.ui.thongke.ThongKeFragment"
-        android:label="fragment_thong_ke"
+        android:label="Thống kê"
         tools:layout="@layout/fragment_thong_ke" />
     <fragment
         android:id="@+id/nav_thoat"
@@ -33,6 +33,6 @@
     <fragment
         android:id="@+id/nav_thu"
         android:name="com.example.moneymanager.ui.thu.ThuFragment"
-        android:label="fragment_thu"
+        android:label="Thu nhập"
         tools:layout="@layout/fragment_thu" />
 </navigation>
