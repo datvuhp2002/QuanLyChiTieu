@@ -18,7 +18,6 @@ public class LoaiChiDialog {
     private LoaiChiViewModel mViewModel;
     private LayoutInflater mLayoutInflater;
     private AlertDialog mDialog;
-
     private TextInputEditText etId, etName;
     private boolean mEditMode;
 

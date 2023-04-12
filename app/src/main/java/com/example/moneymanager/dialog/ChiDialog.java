@@ -19,6 +19,7 @@ import com.example.moneymanager.ui.chi.KhoanChiFragment;
 import com.example.moneymanager.ui.chi.KhoanChiViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class ChiDialog {
@@ -81,7 +82,10 @@ public class ChiDialog {
                         if(!TextUtils.isEmpty(etAmout.getText().toString()) && !TextUtils.isEmpty(etName.getText().toString())) {
                             Chi lc = new Chi();
                             lc.ten = etName.getText().toString();
-                            lc.sotien = Float.parseFloat(etAmout.getText().toString());
+                            float amount = Float.parseFloat(etAmout.getText().toString());
+                            NumberFormat formatter = NumberFormat.getInstance();
+                            String formattedAmount = formatter.format(amount);
+                            lc.sotien = Float.parseFloat(formattedAmount);
                             lc.ghichu = etNote.getText().toString();
                             lc.lcid = ((LoaiChi) mAdapter.getItem(spType.getSelectedItemPosition())).cid;
                             if (mEditMode) {

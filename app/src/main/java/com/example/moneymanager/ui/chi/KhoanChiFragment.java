@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.moneymanager.R;
@@ -39,6 +40,7 @@ public class KhoanChiFragment extends Fragment {
     public KhoanChiViewModel getViewModel() {
         return mViewModel;
     }
+    public EditText etKhoanChi;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -47,6 +49,20 @@ public class KhoanChiFragment extends Fragment {
         mAdapter = new ChiRecyclerviewADapter(getActivity());
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRv.setAdapter(mAdapter);
+        etKhoanChi = view.findViewById(R.id.etKhoanChi);
+        mViewModel = new ViewModelProvider(this).get(KhoanChiViewModel.class);
+        mViewModel.getTongChi().observe(getActivity(), new Observer<Float>() {
+            @Override
+            public void onChanged(Float tong) {
+
+                if(tong != null && tong.floatValue() != 0.0f){
+                    etKhoanChi.setText(""+ tong);
+                }else{
+                    etKhoanChi.setText("0.0");
+                }
+            }
+        });
+
         final KhoanChiFragment currentFragment = this;
         mAdapter.setOnItemEditClickListener(new ItemClickListener() {
             @Override

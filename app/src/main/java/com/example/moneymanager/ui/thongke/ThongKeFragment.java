@@ -60,7 +60,6 @@ public class ThongKeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_thong_ke, container, false);
         mEtTongThu = view.findViewById(R.id.etTongThu);
         rvThongKeLoaiThu = view.findViewById(R.id.rvThongKeLoaiThu);
-
         mEtTongChi = view.findViewById(R.id.etTongChi);
         rvThongKeLoaiChi = view.findViewById(R.id.rvThongKeTongChi);
 
@@ -94,6 +93,13 @@ public class ThongKeFragment extends Fragment {
                 mThongKeLoaiThuAdapter.setList(thongKeLoaiThus);
             }
         });
+
+        mThongKeViewModel.getThongKeLoaiChis().observe(getActivity(), new Observer<List<ThongKeLoaiChi>>() {
+            @Override
+            public void onChanged(List<ThongKeLoaiChi> thongKeLoaiChis) {
+                mThongKeLoaiChiAdapter.setList(thongKeLoaiChis);
+            }
+        });
         mThongKeViewModel.getTongChi().observe(getActivity(), new Observer<Float>() {
             @Override
             public void onChanged(Float tong) {
@@ -103,12 +109,6 @@ public class ThongKeFragment extends Fragment {
                 }else{
                     mEtTongChi.setText("0.0");
                 }
-            }
-        });
-        mThongKeViewModel.getThongKeLoaiChis().observe(getActivity(), new Observer<List<ThongKeLoaiChi>>() {
-            @Override
-            public void onChanged(List<ThongKeLoaiChi> thongKeLoaiChis) {
-                mThongKeLoaiChiAdapter.setList(thongKeLoaiChis);
             }
         });
         return view;

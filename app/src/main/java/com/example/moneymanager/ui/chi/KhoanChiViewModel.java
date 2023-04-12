@@ -17,20 +17,30 @@ import java.util.List;
 public class KhoanChiViewModel extends AndroidViewModel {
         private ChiReponsitory mChiReponsitory;
         private LoaiChiReponsitory mLoaiChiReponsitory;
-        private LiveData<List<Chi>> mAllChi;
+
+
+    private LiveData<List<Chi>> mAllChi;
         private LiveData<List<LoaiChi>> mAllLoaiChi;
-        public KhoanChiViewModel(@NonNull Application application) {
+    private LiveData<Float> mTongChi;
+
+    public KhoanChiViewModel(@NonNull Application application) {
             super( application);
             mChiReponsitory = new ChiReponsitory(application);
             mAllChi = mChiReponsitory.getAllChi();
             mLoaiChiReponsitory = new LoaiChiReponsitory(application);
             mAllLoaiChi = mLoaiChiReponsitory.getAllLoaiChi();
+            mTongChi = mChiReponsitory.sumTongChi();
         }
 
         public LiveData<List<Chi>> getAllChi() {
             return mAllChi;
         }
         public LiveData<List<LoaiChi>> getAllLoaiChi(){return mAllLoaiChi;};
+        public LiveData<Float> getTongChi() {
+                return  mTongChi;
+
+        }
+
         public void insert(Chi Chi){
             mChiReponsitory.insert(Chi);
         }

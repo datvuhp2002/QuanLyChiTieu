@@ -19,7 +19,6 @@ public class ChiReponsitory {
     public ChiReponsitory(Application application){
         this.mChiDao = AppDatabase.getDatabase(application).chiDao();
         mAllChi = mChiDao.findAll();
-
     }
 
     public LiveData<List<Chi>> getAllChi(){
